@@ -1,0 +1,92 @@
+@import url('https://fonts.googleapis.com/css?family=Work+Sans&display=swap');
+
+body{
+    background-color: #222f3e !important;;
+}
+
+/*  SCROLLBAR
+======================================================================*/
+    /* width */
+    ::-webkit-scrollbar {
+        width: 7px;
+      }
+      /* Track */
+      ::-webkit-scrollbar-track {
+        background:  transparent; 
+      }
+      /* Handle */
+      ::-webkit-scrollbar-thumb {
+        background:  #f1c40f; 
+      }
+      /* Handle on hover */
+      ::-webkit-scrollbar-thumb:hover {
+        background:  #f1c40fbb; 
+      }
+
+/* TABLE
+============================================================================*/
+    /* positioning */
+    #anime_table{
+        font: normal 100%/1.5 "Work Sans", sans-serif;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -5%);
+        color: white;
+    }
+    /* header */
+    #table_header{
+        font-weight: bold;
+        text-transform: uppercase;
+        text-align: center;
+        
+    }
+
+    .anime_col:hover{
+        background-color: #f1c40fad;
+        color: black !important;
+        font-weight: bold !important;
+    }
+    td{
+        padding-right: 0px !important;
+        padding-left: 0px !important;
+        margin: 0px 5px;
+    }
+
+    /*   INPUT
+    =============================================*/
+    .input{
+        position: absolute;
+        left: 50%;
+        transform: translate(-50%, 100%);
+        text-align: center;
+    }
+    .input span{
+        font: normal 100%/1.5 "Work Sans", sans-serif;
+        margin-bottom: 20px;
+        color: white;
+    }
+    #user_input{
+        background-color: transparent !important;
+        border: none; 
+        border-bottom: 2px solid #f1c40f !important;
+        font: normal 100%/1.5 "Work Sans", sans-serif;
+    }
+    #user_input:hover,#user_input:focus{
+        outline: none !important;
+        box-shadow: none !important;
+        font: normal 100%/1.5 "Work Sans", sans-serif;
+    }
+    #user_input:hover::placeholder{
+        color: transparent !important;
+    }
+    #user_btn{
+        border: none;
+        font: normal 100%/1.5 "Work Sans", sans-serif;
+        color: white;
+        background-color: transparent !important;
+    }
+    #user_btn:hover, #user_btn:focus{
+        outline: none !important;
+        box-shadow: none !important;
+    }
