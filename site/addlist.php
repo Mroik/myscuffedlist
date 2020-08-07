@@ -1,22 +1,21 @@
 <?php
-	//DB connection data
-	$server="";
-	$username="";
-	$password="";
-	$database="";
-
-	if(!$_FILES["list"]["error"]==UPLOAD_ERR_OK)
-	{
-		echo "There was an error with the file to upload, please retry<br>";
-		exit();
-	}
-
-	$xmlfile=fopen($_FILES["list"]["tmp_name"],"r");
-	$xmldata=fread($xmlfile,filesize($_FILES["list"]["tmp_name"]));
-	fclose($xmlfile);
-	$list=simplexml_load_string($xmldata);
+	$ch = curl_init();
+        
+	$server="localhost";
+        $username="mal";
+        $password="pass";
+        $database="myanimelist";
 
 	$conn=new mysqli($server,$username,$password,$database);
+        curl_setopt($ch,CURLOPT_URL,"https://malscraper.azurewebsites.net/scrape");
+        curl_setopt($ch,CURLOPT_POST, 1);
+        curl_setopt($ch,CURLOPT_POSTFIELDS,"username=".$conn->real_escape_string($_POST["username"])."&listtype=anime");
+        curl_setopt($ch,CURLOPT_RETURNTRANSFER,true);
+        $xmldata=curl_exec($ch);
+        curl_close($ch);
+
+	$list=simplexml_load_string($xmldata);
+
 	if($conn->connect_errno)
 	{
 		echo "Failed to connecto to database<br>";
