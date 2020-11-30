@@ -35,8 +35,10 @@
 				}
 
 				$quser=$conn->real_escape_string($_GET["user"]);
-				$query="create temporary table animelist select anime.title,lists.score,anime_types.type,anime.number_episodes,status.status from lists join (anime) on (anime.id=lists.anime_id) join (mal_users) on (mal_users.id=lists.user_id) join (status) on (status.id=lists.status_id) join (anime_types) on (anime_types.id=anime.type_id) where mal_users.name='".$quser."' order by status.status,anime.title;";
-				$conn->query($query);
+				$query="create temporary table animelist select anime.title,lists.score,anime_types.type,anime.number_episodes,status.status from lists join (anime) on (anime.id=lists.anime_id) join (mal_users) on (mal_users.id=lists.user_id) join (status) on (status.id=lists.status_id) join (anime_types) on (anime_types.id=anime.type_id) where mal_users.name=? order by status.status,anime.title;";
+				$stmt=$conn->prepare($query);
+				$stmt->bind_param("s",$quser);
+				$stmt->execute();
 				$query="alter table animelist add entry int not null auto_increment unique first;";
 				$conn->query($query);
 				$query="select * from animelist;";
